@@ -2,8 +2,8 @@ import processing.core.PApplet;
 
 public class Sketch extends PApplet {
 
-  int redCount = 0;
-  int blueCount = 0;
+  int intredCount = 0;
+  int intblueCount = 0;
 
   public void settings() {
     size(800, 800); 
@@ -18,55 +18,55 @@ public class Sketch extends PApplet {
 
    noLoop();
 
-    int smileyWidth = width / 10; 
-    int smileyHeight = height / 10; 
+    int intsmileyWidth = width / 10; 
+    int intsmileyHeight = height / 10; 
 
-    int gapX = smileyWidth / 5; 
-    int gapY = smileyHeight / 5; 
+    int intgapX = intsmileyWidth / 5; 
+    int intgapY = intsmileyHeight / 5; 
 
     // rows of smiley faces
     for (double i = 0.2; i < 8; i++) {
       for (double j = 0.2; j < 8; j++) {
-        int x = (int)(i * (smileyWidth + gapX) + smileyWidth / 2);
-        int y = (int)(j * (smileyHeight + gapY) + smileyHeight / 2);
+        int x = (int)(i * (intsmileyWidth + intgapX) + intsmileyWidth / 2);
+        int y = (int)(j * (intsmileyHeight + intgapY) + intsmileyHeight / 2);
 
         // Drawing the smiley faces
-        drawSmileyFace(x, y, smileyWidth, smileyHeight);
+        drawSmileyFace(x, y, intsmileyWidth, intsmileyHeight);
 
         // Drawing the circles
         if (i < 10) {
-          int circleX = x + (smileyWidth + gapX) / 2;
+          int circleX = x + (intsmileyWidth + intgapX) / 2;
           int circleY = y;
           
           // Randomize color to be either red or blue (Columns)
           float[] color = getRandomColor();
-          drawCircle(circleX, circleY, gapX / 2, color[0], color[1], color[2]);
+          drawCircle(circleX, circleY, intgapX / 2, color[0], color[1], color[2]);
           if (color[0] == 255) {
-            redCount++;
+            intredCount++;
           } else {
-            blueCount++;
+            intblueCount++;
           }
         }
         if (j < 10) {
           int circleX = x;
-          int circleY = y + (smileyHeight + gapY) / 2;
+          int circleY = y + (intsmileyHeight + intgapY) / 2;
 
           // Randomize color to be either red or blue (Rows)
           float[] color = getRandomColor();
-          drawCircle(circleX, circleY, gapY / 2, color[0], color[1], color[2]);
+          drawCircle(circleX, circleY, intgapY / 2, color[0], color[1], color[2]);
           if (color[0] == 255) {
-            redCount++;
+            intredCount++;
           } else {
-            blueCount++;
+            intblueCount++;
           }
         }
       }
     }
 
     // Depending on how the amount of red or blue circles, the smiley face changes
-    if (redCount > blueCount) {
+    if (intredCount > intblueCount) {
       fill(0, 255, 0); // Green
-    } else if (blueCount > redCount) {
+    } else if (intblueCount > intredCount) {
       fill(255, 0, 0); // Red
     } else {
       fill(139, 69, 19); // Brown (very rare)
@@ -75,13 +75,13 @@ public class Sketch extends PApplet {
     // Draw arcs for each smiley face
     for (double i = 0.2; i < 8; i++) {
       for (double j = 0.2; j < 8; j++) {
-        int x = (int)(i * (smileyWidth + gapX) + smileyWidth / 2);
-        int y = (int)(j * (smileyHeight + gapY) + smileyHeight / 2);
+        int x = (int)(i * (intsmileyWidth + intgapX) + intsmileyWidth / 2);
+        int y = (int)(j * (intsmileyHeight + intgapY) + intsmileyHeight / 2);
 
         int arcX = x;
-        int arcY = y + smileyHeight / 10;
-        int arcWidth = smileyWidth / 2;
-        int arcHeight = smileyHeight / 4;
+        int arcY = y + intsmileyHeight / 10;
+        int arcWidth = intsmileyWidth / 2;
+        int arcHeight = intsmileyHeight / 4;
         arc(arcX, arcY, arcWidth, arcHeight, 0, PI);
       }
     }
